@@ -2,20 +2,12 @@ package main
 
 import (
 	"fmt"
-	"log"
+	// "github.com/pkg/profile"
 )
 
 func main() {
-	if err := run(); err != nil {
-		log.Fatalf("encountered an error:\n%v", err)
-	}
-}
-
-func run() error {
-	ans, err := Day1()
-	if err != nil { return err }
-	fmt.Printf("Day 1 answer: %v\n", ans)
-
-
-	return err
+	day1Ans := Day1()
+	day1ConcurrencyAns := Day1WithConcurrency()
+	fmt.Printf("Day 1 Answer:\t\t%v\n", day1Ans)
+	fmt.Printf("Day 1 (v2) Answer:\t%v\n", day1ConcurrencyAns)
 }
