@@ -2,12 +2,29 @@ package main
 
 import (
 	"fmt"
-	// "github.com/pkg/profile"
+	"flag"
+
+	"github.com/BryanCoxwell/AdventOfCode22/Day1"
 )
 
+var problems = map[int]func() {
+	1: Day1.All,
+}
+
 func main() {
-	day1Ans := Day1()
-	day1ConcurrencyAns := Day1WithConcurrency()
-	fmt.Printf("Day 1 Answer:\t\t%v\n", day1Ans)
-	fmt.Printf("Day 1 (v2) Answer:\t%v\n", day1ConcurrencyAns)
+	dayPtr := flag.Int("day", 1, "day")
+	flag.Parse()
+
+	problem, ok := problems[*dayPtr]
+	if !ok {
+		fmt.Printf("invalid entry: %d\n", *dayPtr)
+		fmt.Printf("valid entries are:\n")
+		for k := range problems {
+			fmt.Printf("[%d]:\tDay %d\n", k, k)
+		}
+		return
+	}
+
+	problem()
+	
 }
