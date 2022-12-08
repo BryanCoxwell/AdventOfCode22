@@ -1,6 +1,9 @@
 package main
 
-import "log"
+import (
+	"fmt"
+	"log"
+)
 
 func main() {
 	if err := run(); err != nil {
@@ -9,7 +12,10 @@ func main() {
 }
 
 func run() error {
-	err := Day1()
+	ans, err := Day1()
+	if err != nil { return err }
+	fmt.Printf("Day 1 answer: %v\n", ans)
+
 
 	return err
 }
