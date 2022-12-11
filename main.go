@@ -3,12 +3,11 @@ package main
 import (
 	"fmt"
 	"flag"
-
-	"github.com/BryanCoxwell/AdventOfCode22/Day1"
 )
 
 var problems = map[int]func() {
-	1: Day1.All,
+	1: Day1,
+	2: Day2,
 }
 
 func main() {
@@ -24,7 +23,5 @@ func main() {
 		}
 		return
 	}
-
 	problem()
-	
 }
