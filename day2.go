@@ -8,47 +8,72 @@ import (
 const day2InputFile = "inputs/day2_input.txt"
 
 func Day2() {
-	fmt.Printf("===== Day 2 Answers ===== \n")
-	fmt.Printf("Part 1:\t\t%d\n", Day2Part1())
-	// fmt.Printf("Part 2:\t\t%d\n", Part2())
-}
-
-func Day2Part1() int {
 	f := openInputFile(day2InputFile)
-	scanner := bufio.NewScanner(f)
+	scanner := bufio.NewScanner(f)	
+	part1Points := 0
+	part2Points := 0
 
-	totalPoints := 0
 	for scanner.Scan() {
-		game := NewGame(scanner.Bytes())
-		totalPoints += game.Outcome
+		b := scanner.Bytes()
+		part1Points += part1Rules(b)
+		part2Points += part2Rules(b)
 	}
-	return totalPoints
+
+	fmt.Printf("===== Day 2 Answers ===== \n")
+	fmt.Printf("Part 1:\t\t%d\n", part1Points)
+	fmt.Printf("Part 2:\t\t%d\n", part2Points)
 }
 
-type Game struct {
-	MoveA byte
-	MoveB byte
-	Outcome int
+// part1Rules calculates the points for a single rock, paper, scissors game 
+// based on the rules for Part 1
+func part1Rules(b []byte) int {
+	selectionPoints := asciiToSelectionPoint(b[2])
+	score := scoreMap[[2]byte{b[0], b[2]}]
+	gameOutcome := selectionPoints + score
+	return gameOutcome
 }
 
-func NewGame(l []byte) *Game {
-	selectionPoints := int(l[2] - 87)
-	score := outcomes[[2]byte{l[2], l[0]}]
-	return &Game{
-		MoveA: l[0],
-		MoveB: l[2],
-		Outcome: selectionPoints + score,
-	}
+// part2Rules calculates the points for a single rock, paper, scissors game 
+// based on the rules for Part 2
+func part2Rules(b []byte) int {
+	selectionPoints := selectionPointMap[[2]byte{b[0], b[2]}]
+	score := asciiToScore(b[2])
+	gameOutcome := score + selectionPoints
+	return gameOutcome	
 }
 
-var outcomes = map[[2]byte] int {
-	{88, 65}: 3,
-	{88, 66}: 0,
-	{88, 67}: 6,
-	{89, 65}: 6,
-	{89, 66}: 3,
-	{89, 67}: 0,
-	{90, 65}: 0,
-	{90, 66}: 6,
-	{90, 67}: 3,
+// asciiToSelectionPoint takes an ASCII move value and returns its corresponding selection point value
+func asciiToSelectionPoint(move byte) int {
+	return int(move) - 87
+}
+
+// asciiToScore takes an ASCII outcome value and returns its corresponding score
+func asciiToScore(outcome byte) int {
+	return (int(outcome) - 88) * 3
+}
+
+// selectionPointMap maps {outcome, opponentMove} to a selection point value
+var selectionPointMap = map[[2]byte] int {
+	{65, 88}: 3,
+	{66, 88}: 1,
+	{67, 88}: 2,
+	{65, 89}: 1,
+	{66, 89}: 2,
+	{67, 89}: 3,
+	{65, 90}: 2,
+	{66, 90}: 3,
+	{67, 90}: 1,
+}
+
+// scoreMap maps {opponentMove, playerMove} to a score value
+var scoreMap = map[[2]byte] int {
+	{65, 88}: 3,
+	{66, 88}: 0,
+	{67, 88}: 6,
+	{65, 89}: 6,
+	{66, 89}: 3,
+	{67, 89}: 0,
+	{65, 90}: 0,
+	{66, 90}: 6,
+	{67, 90}: 3,
 }
