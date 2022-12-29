@@ -8,6 +8,8 @@
 *.so
 *.dylib
 
+AdventOfCode22
+
 # Test binary, built with `go test -c`
 *.test
 
