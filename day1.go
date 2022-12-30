@@ -10,10 +10,10 @@ import (
 
 const day1InputFile = "inputs/day1_input.txt"
 
-func Day1() {
+func main() {
 	fmt.Printf("===== Day 1 Answers ===== \n")
-	fmt.Printf("Part 1:\t\t%d\n", Day1Part1())
-	fmt.Printf("Part 2:\t\t%d\n", Day1Part2())
+	fmt.Printf("Part 1:\t\t%d\n", part1())
+	fmt.Printf("Part 2:\t\t%d\n", part2())
 }
 
 /*
@@ -21,7 +21,7 @@ Part1 reads in the values from Inputs/day1_input.txt, sums
 the values in each sublist (sublists are separated by empty spaces)
 and returns the highest sum.
 */
-func Day1Part1() int {
+func part1() int {
 	f := openInputFile(day1InputFile)
 	scanner := bufio.NewScanner(f)
 
@@ -44,7 +44,7 @@ func Day1Part1() int {
 Part2 is similar to Part1, but now we return the sum of the 
 sublists that have the top three highest sums.
 */
-func Day1Part2() int {
+func part2() int {
 	f := openInputFile(day1InputFile)
 	scanner := bufio.NewScanner(f)
 	sums := []int{}

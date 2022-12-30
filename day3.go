@@ -3,17 +3,18 @@ package main
 import (
 	"fmt"
 	"bufio"
+    "os"
 )
 
 const day3InputFile = "inputs/day3_input.txt"
 
-func Day3() {
+func main() {
 	fmt.Printf("===== Day 3 Answers ===== \n")
-	fmt.Printf("Part 1:\t\t%d\n", Day3Part1())
-	fmt.Printf("Part 2:\t\t%d\n", Day3Part2())
+	fmt.Printf("Part 1:\t\t%d\n", part1())
+	fmt.Printf("Part 2:\t\t%d\n", part2())
 }
 
-func Day3Part1() int {
+func part1() int {
     f := openInputFile(day3InputFile)
     scanner := bufio.NewScanner(f)
     
@@ -35,7 +36,7 @@ func Day3Part1() int {
     return prioritySum
 }
 
-func Day3Part2() int {
+func part2() int {
     f := openInputFile(day3InputFile)
     scanner := bufio.NewScanner(f)
 
@@ -93,3 +94,11 @@ func findBadge(group []string) byte {
 }
 
 
+// openInputFile returns the input file
+func openInputFile(inp string) *os.File {
+	f, err := os.Open(inp)
+	if err != nil {
+		panic(fmt.Errorf("failed to open file %v: %v", inp, err))
+	}
+	return f
+}

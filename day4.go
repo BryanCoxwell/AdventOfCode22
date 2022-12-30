@@ -2,19 +2,21 @@ package main
 
 import (
 	"fmt"
+    "os"
+    "strconv"
 	"bufio"
 	"strings"
 )
 
 const day4InputFile = "inputs/day4_input.txt"
 
-func Day4() {
-	fmt.Printf("===== Day 3 Answers ===== \n")
-	fmt.Printf("Part 1:\t\t%d\n", Day4Part1())
-	fmt.Printf("Part 2:\t\t%d\n", Day4Part2())
+func main() {
+	fmt.Printf("===== Day 4 Answers ===== \n")
+	fmt.Printf("Part 1:\t\t%d\n", part1())
+	fmt.Printf("Part 2:\t\t%d\n", part2())
 }
 
-func Day4Part1() int {
+func part1() int {
 	f := openInputFile(day4InputFile)
     scanner := bufio.NewScanner(f)
 
@@ -29,7 +31,7 @@ func Day4Part1() int {
 	return containedRanges
 }
 
-func Day4Part2() int {
+func part2() int {
 	f := openInputFile(day4InputFile)
     scanner := bufio.NewScanner(f)
 
@@ -54,4 +56,22 @@ func convertAreaStringToIntSlice(lst string) []int {
 		areaIntSlice = append(areaIntSlice, atoi(i))
 	}
 	return areaIntSlice
+}
+
+// openInputFile returns the input file
+func openInputFile(inp string) *os.File {
+	f, err := os.Open(inp)
+	if err != nil {
+		panic(fmt.Errorf("failed to open file %v: %v", inp, err))
+	}
+	return f
+}
+
+// atoi converts an ascii value to an integer
+func atoi(inp string) int {
+	val, err := strconv.Atoi(inp)
+	if err != nil {
+		panic(fmt.Errorf("strconv.Atoi: %v", err))
+	}
+	return val
 }
