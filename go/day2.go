@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-const day2InputFile = "inputs/day2_input.txt"
+const day2InputFile = "../inputs/day2_input.txt"
 
 func main() {
 	f := openInputFile(day2InputFile)

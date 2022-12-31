@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-const day3InputFile = "inputs/day3_input.txt"
+const day3InputFile = "../inputs/day3_input.txt"
 
 func main() {
 	fmt.Printf("===== Day 3 Answers ===== \n")

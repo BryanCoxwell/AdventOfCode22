@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-const day5InputFile = "inputs/day5_input.txt"
+const day5InputFile = "../inputs/day5_input.txt"
 
 const SPACE = byte(32)
 const STACK_COUNT = 9

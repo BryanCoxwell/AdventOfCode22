@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-const day1InputFile = "inputs/day1_input.txt"
+const day1InputFile = "../inputs/day1_input.txt"
 
 func main() {
 	fmt.Printf("===== Day 1 Answers ===== \n")

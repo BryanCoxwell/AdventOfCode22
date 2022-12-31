@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-const day4InputFile = "inputs/day4_input.txt"
+const day4InputFile = "../inputs/day4_input.txt"
 
 func main() {
 	fmt.Printf("===== Day 4 Answers ===== \n")
