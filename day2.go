@@ -1,16 +1,16 @@
 package main
 
 import (
-	"fmt"
 	"bufio"
-    "os"
+	"fmt"
+	"os"
 )
 
 const day2InputFile = "inputs/day2_input.txt"
 
 func main() {
 	f := openInputFile(day2InputFile)
-	scanner := bufio.NewScanner(f)	
+	scanner := bufio.NewScanner(f)
 	part1Points := 0
 	part2Points := 0
 
@@ -25,7 +25,7 @@ func main() {
 	fmt.Printf("Part 2:\t\t%d\n", part2Points)
 }
 
-// part1Rules calculates the points for a single rock, paper, scissors game 
+// part1Rules calculates the points for a single rock, paper, scissors game
 // based on the rules for Part 1
 func part1(b []byte) int {
 	selectionPoints := asciiToSelectionPoint(b[2])
@@ -34,13 +34,13 @@ func part1(b []byte) int {
 	return gameOutcome
 }
 
-// part2Rules calculates the points for a single rock, paper, scissors game 
+// part2Rules calculates the points for a single rock, paper, scissors game
 // based on the rules for Part 2
 func part2(b []byte) int {
 	selectionPoints := selectionPointMap[[2]byte{b[0], b[2]}]
 	score := asciiToScore(b[2])
 	gameOutcome := score + selectionPoints
-	return gameOutcome	
+	return gameOutcome
 }
 
 // asciiToSelectionPoint takes an ASCII move value and returns its corresponding selection point value
@@ -54,7 +54,7 @@ func asciiToScore(outcome byte) int {
 }
 
 // selectionPointMap maps {outcome, opponentMove} to a selection point value
-var selectionPointMap = map[[2]byte] int {
+var selectionPointMap = map[[2]byte]int{
 	{65, 88}: 3,
 	{66, 88}: 1,
 	{67, 88}: 2,
@@ -67,7 +67,7 @@ var selectionPointMap = map[[2]byte] int {
 }
 
 // scoreMap maps {opponentMove, playerMove} to a score value
-var scoreMap = map[[2]byte] int {
+var scoreMap = map[[2]byte]int{
 	{65, 88}: 3,
 	{66, 88}: 0,
 	{67, 88}: 6,
@@ -78,7 +78,6 @@ var scoreMap = map[[2]byte] int {
 	{66, 90}: 6,
 	{67, 90}: 3,
 }
-
 
 // openInputFile returns the input file
 func openInputFile(inp string) *os.File {

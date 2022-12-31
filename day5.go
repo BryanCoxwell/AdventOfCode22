@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	//"bufio"
-    "os"
+	"os"
 )
 
 const day5InputFile = "inputs/day5_input.txt"
@@ -14,10 +14,10 @@ func main() {
 	// fmt.Printf("Part 2:\t\t%d\n", Day5Part2())
 }
 
-type Stack []int 
+type Stack []int
 
 func (s Stack) push(item int) {
-    s = append(s, item)
+	s = append(s, item)
 }
 
 func (s *Stack) pop(count int) []int {
@@ -25,20 +25,20 @@ func (s *Stack) pop(count int) []int {
 		fmt.Println("Can't pop more items than there are on the stack")
 		return nil
 	}
-    popped := (*s)[len(*s)-count:]
+	popped := (*s)[len(*s)-count:]
 	*s = (*s)[:len(*s)-count]
-	return popped}
-
+	return popped
+}
 
 func part1() int {
-    s := Stack{1, 2, 5, 1}
-    a := s.pop(1)
-    fmt.Println(a)
-    b := s.pop(1)
-    fmt.Println(b)
-    fmt.Println(s)
+	s := Stack{1, 2, 5, 1}
+	a := s.pop(1)
+	fmt.Println(a)
+	b := s.pop(1)
+	fmt.Println(b)
+	fmt.Println(s)
 
-    return s[0]
+	return s[0]
 }
 
 // openInputFile returns the input file

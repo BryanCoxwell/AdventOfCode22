@@ -4,8 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"strconv"
 	"sort"
+	"strconv"
 )
 
 const day1InputFile = "inputs/day1_input.txt"
@@ -41,7 +41,7 @@ func part1() int {
 }
 
 /*
-Part2 is similar to Part1, but now we return the sum of the 
+Part2 is similar to Part1, but now we return the sum of the
 sublists that have the top three highest sums.
 */
 func part2() int {
@@ -62,12 +62,14 @@ func part2() int {
 	}
 	sort.Ints(sums)
 	maxIdx := len(sums) - 1
-	return sums[maxIdx] + sums[maxIdx - 1] + sums[maxIdx - 2]
+	return sums[maxIdx] + sums[maxIdx-1] + sums[maxIdx-2]
 }
 
 // max returns the maximum of two ints
 func max(a, b int) int {
-	if a >= b { return a }
+	if a >= b {
+		return a
+	}
 	return b
 }
 

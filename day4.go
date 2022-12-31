@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
-    "os"
-    "strconv"
 	"bufio"
+	"fmt"
+	"os"
+	"strconv"
 	"strings"
 )
 
@@ -18,7 +18,7 @@ func main() {
 
 func part1() int {
 	f := openInputFile(day4InputFile)
-    scanner := bufio.NewScanner(f)
+	scanner := bufio.NewScanner(f)
 
 	var containedRanges int = 0
 
@@ -33,7 +33,7 @@ func part1() int {
 
 func part2() int {
 	f := openInputFile(day4InputFile)
-    scanner := bufio.NewScanner(f)
+	scanner := bufio.NewScanner(f)
 
 	var overlappingRanges int = 0
 
@@ -46,7 +46,7 @@ func part2() int {
 	return overlappingRanges
 }
 
-// convertAreaStringToIntSlice takes a string of the form "a-b,c-d" (where a, b, c, and d can be converted 
+// convertAreaStringToIntSlice takes a string of the form "a-b,c-d" (where a, b, c, and d can be converted
 // to integers) and returns a slice of integers [a b c d]
 func convertAreaStringToIntSlice(lst string) []int {
 	pair := strings.Split(lst, ",")
